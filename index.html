@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para a Melhor Mãe do Mundo</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Música das Memórias</title>
+    <link rel="stylesheet" href="home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="card">
-        <h1 id="frase">Carregando memórias...</h1>
-        
-        <div class="image-container">
-            <img id="imagem" src="" alt="Nossa memória" onclick="proximafoto()">
+    <div class="menu-container">
+        <div class="logo">
+            <span class="emoji">🎵</span>
+            <h1>MEMÓRIAS DA MAMÃE</h1>
+            <p>Edição Especial: Melhor Mãe do Mundo</p>
         </div>
 
-        <div class="controls">
-            <button onclick="proximafoto()">Próxima Memória ❤️</button>
+        <div class="menu-options">
+            <a href="fotos.html" class="btn-play">INICIAR MÚSICA</a>
+            <div class="stats">
+                <span>❤️ Tempo de duração: vida toda</span>
+                <span>🏆 Ranking: 1° lugar de melhor mãe</span>
+            </div>
         </div>
-        <p class="counter"><span id="numero-atual">1</span> / <span id="total-fotos">0</span></p>
+
+        <footer>
+            Desenvolvido com ❤️ pelo(a) seu(sua) fã nº 1
+        </footer>
     </div>
-
-    <script src="index.js"></script>
 </body>
 </html>

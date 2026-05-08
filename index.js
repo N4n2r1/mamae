@@ -36,39 +36,70 @@ const listaImg = [
     "/fotos/vestido_preto.jpeg"
 ];
 
+// ... (mantenha suas listas listaFrases e listaImg no topo)
+
 const fraseElemento = document.getElementById('frase');
 const imagemElemento = document.getElementById('imagem');
-const contadorElemento = document.getElementById('numero-atual');
-const totalElemento = document.getElementById('total-fotos');
+const progressFill = document.getElementById('progress-fill');
+const tempoAtualTxt = document.getElementById('tempo-atual');
+const tempoTotalTxt = document.getElementById('tempo-total');
 
+const meuAudio = new Audio('WW.mp3');
+let musicaIniciada = false;
 let indiceAtual = 0;
 let totalFotos = listaFrases.length;
 
-// Inicialização
-totalElemento.textContent = totalFotos;
-atualizarConteudo();
+// Inicializa a duração no player
+meuAudio.addEventListener('loadedmetadata', () => {
+    tempoTotalTxt.textContent = formatarTempo(meuAudio.duration);
+});
+
+// Atualiza a barra de progresso enquanto a música toca
+meuAudio.addEventListener('timeupdate', () => {
+    const percent = (meuAudio.currentTime / meuAudio.duration) * 100;
+    progressFill.style.width = percent + "%";
+    tempoAtualTxt.textContent = formatarTempo(meuAudio.currentTime);
+});
+
+function formatarTempo(segundos) {
+    const min = Math.floor(segundos / 60);
+    const seg = Math.floor(segundos % 60);
+    return `${min}:${seg < 10 ? '0' : ''}${seg}`;
+}
 
 function proximafoto() {
-    // Adiciona classe de animação (fade out)
-    imagemElemento.classList.add('fade');
+    if (!musicaIniciada) {
+        musicaIniciada = true;
+        meuAudio.play();
+        document.getElementById('visualizer').style.display = 'flex';
+        // Chuva de corações inicial
+        for(let i = 0; i < 20; i++) setTimeout(soltarCoracoes, i * 100);
+    }
+
+    soltarCoracoes();
+    imagemElemento.style.opacity = "0"; // Fade out simples
     
-    // Espera 400ms (tempo da transição CSS) para trocar a imagem
     setTimeout(() => {
-        if (indiceAtual < totalFotos - 1) {
-            indiceAtual++;
-        } else {
-            indiceAtual = 0;
-        }
-        
-        atualizarConteudo();
-        
-        // Remove a classe de animação (fade in)
-        imagemElemento.classList.remove('fade');
+        indiceAtual = (indiceAtual + 1) % totalFotos;
+        fraseElemento.textContent = listaFrases[indiceAtual];
+        imagemElemento.src = listaImg[indiceAtual];
+        imagemElemento.style.opacity = "1"; // Fade in
     }, 400);
 }
 
-function atualizarConteudo() {
-    fraseElemento.textContent = listaFrases[indiceAtual];
-    imagemElemento.src = listaImg[indiceAtual];
-    contadorElemento.textContent = indiceAtual + 1;
+function soltarCoracoes() {
+    for (let i = 0; i < 8; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 10 + "px";
+        heart.style.animationDuration = Math.random() * 2 + 2 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+    }
 }
+
+// Iniciar primeiro conteúdo
+fraseElemento.textContent = listaFrases[0];
+imagemElemento.src = listaImg[0];

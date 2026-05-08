@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #ff85a2 0%, #ff4d94 100%);
+    font-family: 'Sniglet', cursive;
+    color: white;
+    overflow: hidden;
+}
+
+.menu-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 50px;
+    border-radius: 40px;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-size: 50px;
+    margin: 10px 0;
+    text-shadow: 4px 4px 0px #b30047;
+    letter-spacing: 2px;
+}
+
+.emoji {
+    font-size: 60px;
+    display: block;
+    animation: pulse 2s infinite;
+}
+
+.btn-play {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 20px 60px;
+    background-color: #43ffaf; /* Verde "Start" */
+    color: #006b3e;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 800;
+    border-radius: 50px;
+    border-bottom: 8px solid #2dbd7e;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+.btn-play:hover {
+    transform: translateY(2px);
+    border-bottom-width: 4px;
+    background-color: #5effbc;
+}
+
+.btn-play:active {
+    transform: translateY(6px);
+    border-bottom-width: 0px;
+}
+
+.stats {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Animação para o emoji pulsar */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}

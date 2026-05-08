@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Memórias da Mamãe</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+</head>
+<body class="spotify-theme">
+    <div class="player-container">
+        <div class="player-header">
+            <span>Tocando da Playlist</span>
+            <strong>Para a Melhor Mãe do Mundo</strong>
+        </div>
+
+        <div class="album-cover">
+            <img id="imagem" src="" alt="Memória" onclick="proximafoto()">
+        </div>
+
+        <div class="song-info">
+            <h2 id="musica-nome">Memórias</h2>
+            <p id="frase">Carregando...</p>
+        </div>
+
+        <div class="progress-container">
+            <span id="tempo-atual">0:00</span>
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <span id="tempo-total">0:00</span>
+        </div>
+
+        <div class="player-controls">
+            <button class="shuffle">🔀</button>
+            <button class="prev" onclick="proximafoto()">⏮️</button>
+            <button class="play-btn" onclick="proximafoto()">⏸️</button>
+            <button class="next" onclick="proximafoto()">⏭️</button>
+            <button class="repeat">🔁</button>
+        </div>
+
+        <div class="music-visualizer" id="visualizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
